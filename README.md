@@ -1,10 +1,11 @@
 # Backup of all my projects in a single signed file
 
-```
+```sh
+title='2023.02.19'
 # verify integrity of the archive: check GPG signature
-gpg --verify backup.tar.xz.sig backup.tar.xz
-# unpack .tar.bz2 into separate directory
-tar -xf backup.tar.xz
+gpg --verify $title.tar.xz.sig $title.tar.xz
+# unpack into separate directory
+tar -xf $title.tar.xz
 ```
 
 Mirrors: https://github.com/paulmillr/backup, https://gitlab.com/paulmillr/backup
@@ -33,8 +34,7 @@ echo "Backing up all github repos for user ${user} into dir '$title'"
 mkdir $title && cd $title
 dlpage 1; dlpage 2; dlpage 3
 cd ..
-# Sign archive
-title='backup'
-tarbz2 $title
-gpg --output ${title}.tar.bz2.sig --sign ${title}.tar.bz2
+
+XZ_OPT=-9 tar -Jcvjf "$title.tar.xz" "$title" # create .tar.xz
+gpg --detach-sign --sign ${title}.tar.xz # sign archive
 ```
