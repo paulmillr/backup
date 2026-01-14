@@ -8,6 +8,20 @@ Mirrors:
 - https://gitlab.com/paulmillr/backup
 - https://codeberg.org/paulmillr/backup
 
+## Excluded projects
+
+Test vectors & some dotfiles are excluded (>100MB git file limit), clone manually:
+
+```sh
+git clone git@github.com:paulmillr/acvp-vectors.git
+git clone git@github.com:paulmillr/eth-vectors.git
+git clone git@github.com:paulmillr/qr-code-vectors.git
+git clone git@github.com:paulmillr/noble-hashes-vectors.git
+git clone git@github.com:paulmillr/post-quantum-vectors.git
+
+git clone git@github.com:paulmillr/dotfiles-vsix.git
+```
+
 ## Usage
 
 ```sh
@@ -24,7 +38,7 @@ gpg --detach-sign --armor --sign shasum.txt
 ## --------
 
 # Verify, unpack into separate directory
-title='2025.06.20'
+title='2026.01.14'
 tar -xf $title.tar.xz
 
 # Create archive
